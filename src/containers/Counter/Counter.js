@@ -50,7 +50,7 @@ const mapStateToProps = (state) => {
 
     //please note that because we have split the reducers,
     //this creates seperate slices of the state which 
-    //correspond with the properties we ave the combineReducers method.
+    //correspond with the properties we have the combineReducers method.
     //thus, the state that is accessed within those seperate reducers
     //can ONLY be mapped to props via state.{propertyName}.{property}.
     //see below:

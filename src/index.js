@@ -15,6 +15,10 @@ import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
+//NOTE:  When you spilt reducers, these
+// keys now represent slices of the state.
+// you can no longer access global state
+//on its own, but must use state.ctr.{property}, for example.
 const rootReducer = combineReducers({
     ctr: counterReducer,
     res: resultsReducer
