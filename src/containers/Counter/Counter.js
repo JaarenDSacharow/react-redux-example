@@ -28,7 +28,7 @@ class Counter extends Component {
                 <button onClick={() => this.props.onStoreResult(this.props.ctr)}>Store Result</button>
                 <ul>
                     {this.props.storedResults.map((strResult) => (
-                        //in order to pass data to MapDispatch to Props and then to your store
+                        //in order to pass data to mapDispatchToProps and then to your store
                         //you must wrap the this.props in an anonymous function and then pass the data
                         //as an argument.
                      <li  key={strResult.id} onClick={() => this.props.onDeleteResult(strResult.id)}>{strResult.value}</li>
@@ -39,7 +39,7 @@ class Counter extends Component {
     }
 }
 
-
+//two important methods you need to use to have a container component interact with REDUX:
 
 //1. mapStateToProps stores instructions as to  how you want to map incoming state to props
 // state is managed in redux, not a component, this is how you use props from state
