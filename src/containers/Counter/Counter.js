@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import CounterControl from '../../components/CounterControl/CounterControl';
 import CounterOutput from '../../components/CounterOutput/CounterOutput';
 
-import * as actionTypes from '../../Store/actions';
+import {increment, decrement, add, subtract, store, remove }  from '../../Store/actions/actions';
 
 class Counter extends Component {
 
@@ -71,14 +71,14 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onIncrementCounter : () => dispatch({type:actionTypes.INCREMENT}),
-        onDecrementCounter : () => dispatch({type:actionTypes.DECREMENT}),
-        onAddCounter : () => dispatch({type:actionTypes.ADD, value: 10}),
-        onSubtractCounter : () => dispatch({type:actionTypes.SUBTRACT, value: 10}),
-        onStoreResult: (result) => dispatch({type: actionTypes.STORE, result: result}),
+        onIncrementCounter : () => dispatch(increment()),
+        onDecrementCounter : () => dispatch(decrement()),
+        onAddCounter : () => dispatch(add(10)),
+        onSubtractCounter : () => dispatch(subtract(10)),
+        onStoreResult: (result) => dispatch(store(result)),
         //now that we wrapped the prop in an anonymous function on the UI, we
         //can pass data to this mappedProp and dispatch data from the UI to the store.
-        onDeleteResult: (id) => dispatch({type: actionTypes.DELETE, resultElId: id}),
+        onDeleteResult: (id) => dispatch(remove(id)),
     };
 }
 

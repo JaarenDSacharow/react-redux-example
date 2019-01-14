@@ -1,4 +1,4 @@
-import * as actionTypes from '../actions';
+import * as actionTypes from '../actions/actions';
 
 //spilt the reducers by responsiblity.
 //this reducer is responsible only for results. (Storing)
