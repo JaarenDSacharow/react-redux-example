@@ -1,32 +1,37 @@
+import * as actionTypes from '../actions';
+
+//this reducer is responsible only for counting.
+
 const initialState = {
-    counter: 0
+    counter: 0,
 }
 
-const reducer = (state = initialState, action) => {
+const counterReducer = (state = initialState, action) => {
     switch (action.type) {
-        case "INC_COUNTER":
+        case actionTypes.INCREMENT:
             return {
                 ...state,
                 counter: state.counter + 1
             }
-        case "DEC_COUNTER":
+        case actionTypes.DECREMENT:
             return {
                 ...state,
                 counter: state.counter - 1
             }
-        case "ADD_COUNTER":
+        case actionTypes.ADD:
             return {
                 ...state,
                 counter: state.counter + action.value
             }
-        case "SUBTRACT_COUNTER":
+        case actionTypes.SUBTRACT:
             return {
                 ...state,
                 counter: state.counter - action.value
             }
+      
 
     }
     return state;
 }
 
-export default reducer;
+export default counterReducer;

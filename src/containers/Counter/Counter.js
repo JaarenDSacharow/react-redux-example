@@ -7,17 +7,33 @@ import { connect } from 'react-redux';
 import CounterControl from '../../components/CounterControl/CounterControl';
 import CounterOutput from '../../components/CounterOutput/CounterOutput';
 
+import * as actionTypes from '../../Store/actions';
+
 class Counter extends Component {
 
+   
 
     render () {
+        //note that in the button onClick, we have to pass the props because
+        //the split reducers cannot use global state
         return (
             <div>
                 <CounterOutput value={this.props.ctr} />
                 <CounterControl label="Increment" clicked={this.props.onIncrementCounter} />
                 <CounterControl label="Decrement" clicked={this.props.onDecrementCounter}  />
-                <CounterControl label="Add 5" clicked={this.props.onAddCounter}  />
-                <CounterControl label="Subtract 5" clicked={this.props.onSubtractCounter}  />
+                <CounterControl label="Add 10" clicked={this.props.onAddCounter}  />
+                <CounterControl label="Subtract 10" clicked={this.props.onSubtractCounter}  />
+                <hr />
+
+                <button onClick={() => this.props.onStoreResult(this.props.ctr)}>Store Result</button>
+                <ul>
+                    {this.props.storedResults.map((strResult) => (
+                        //in order to pass data to MapDispatch to Props and then to your store
+                        //you must wrap the this.props in an anonymous function and then pass the data
+                        //as an argument.
+                     <li  key={strResult.id} onClick={() => this.props.onDeleteResult(strResult.id)}>{strResult.value}</li>
+                    ))}
+                </ul>
             </div>
         );
     }
@@ -31,25 +47,38 @@ class Counter extends Component {
 
 
 const mapStateToProps = (state) => {
+
+    //please note that because we have split the reducers,
+    //this creates seperate slices of the state which 
+    //correspond with the properties we ave the combineReducers method.
+    //thus, the state that is accessed within those seperate reducers
+    //can ONLY be mapped to props via state.{propertyName}.{property}.
+    //see below:
     return {
-        ctr: state.counter
+        ctr: state.ctr.counter, 
+        storedResults: state.res.results
     };
 }
 
 //2. mapDispatchToProps - which types of actions do I want to dispatch in this container
-// it returns a javascript object that will contain propnames that are references to functions we can use
-// to dispatch actions
+// it returns a javascript object that will contain propnames that map to anonymous functions we can use
+// to dispatch actions.
 //the dispatch argument is a helper function provided by react-redux to dispatch actions
 
 // the key of the javascript object (onIncrementCounter) is the prop that we will map to the anonymous
-//function that calls dispatch with type and value
+//function that calls dispatch with type and value\
+//An action has a type and payload.
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onIncrementCounter : () => dispatch({type:'INC_COUNTER'}),
-        onDecrementCounter : () => dispatch({type:'DEC_COUNTER'}),
-        onAddCounter : () => dispatch({type:'ADD_COUNTER', value: 5}),
-        onSubtractCounter : () => dispatch({type:'SUBTRACT_COUNTER', value: 5})
+        onIncrementCounter : () => dispatch({type:actionTypes.INCREMENT}),
+        onDecrementCounter : () => dispatch({type:actionTypes.DECREMENT}),
+        onAddCounter : () => dispatch({type:actionTypes.ADD, value: 10}),
+        onSubtractCounter : () => dispatch({type:actionTypes.SUBTRACT, value: 10}),
+        onStoreResult: (result) => dispatch({type: actionTypes.STORE, result: result}),
+        //now that we wrapped the prop in an anonymous function on the UI, we
+        //can pass data to this mappedProp and dispatch data from the UI to the store.
+        onDeleteResult: (id) => dispatch({type: actionTypes.DELETE, resultElId: id}),
     };
 }
 
