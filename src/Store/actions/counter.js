@@ -1,4 +1,4 @@
-import * as actionTypes from '../actionTypes';
+import * as actionTypes from './actionTypes';
 
 //these are action creators..They are just functions that return actions.
 //we use them to return actions so that we can make use of asynchronous middleware,
