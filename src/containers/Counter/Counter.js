@@ -7,11 +7,11 @@ import { connect } from 'react-redux';
 import CounterControl from '../../components/CounterControl/CounterControl';
 import CounterOutput from '../../components/CounterOutput/CounterOutput';
 
-import {increment, decrement, add, subtract, store, remove }  from '../../Store/actions/actions';
+import {increment, decrement, add, subtract}  from '../../Store/actions/counter/counter';
+import {store, remove}  from '../../Store/actions/result/result';
 
 class Counter extends Component {
 
-   
 
     render () {
         //note that in the button onClick, we have to pass the props because

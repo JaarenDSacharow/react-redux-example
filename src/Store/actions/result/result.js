@@ -1,47 +1,11 @@
-//we want to export the action types and use them as constants so that
-//there is no chance of mispelling or misusing strings in the application.
-//doing this lets us use autocomplete as well as the IDE telling us we
-//spelled the action type incorrectly.
-
+import * as actionTypes from '../actionTypes';
 
 //these are action creators..They are just functions that return actions.
 //we use them to return actions so that we can make use of asynchronous middleware,
 //which we couldn't do if we just called action types and dispatched them directly
 //from the component. 
 
-export const INCREMENT = 'INCREMENT';
-export const DECREMENT = 'DECREMENT';
-export const ADD = 'ADD';
-export const SUBTRACT = 'SUBTRACT';
-export const STORE = 'STORE';
-export const DELETE = 'DELETE';
 
-
-export const increment = () => {
-    return {
-        type:INCREMENT
-    };
-}
-
-export const decrement = () => {
-    return {
-        type:DECREMENT
-    };
-}
-
-export const add = (number) => {
-    return {
-        type:ADD, 
-        value: number
-    }
-}
-
-export const subtract = (number) => {
-    return {
-        type:SUBTRACT, 
-        value: number
-    }
-}
 
 //this is the synchronous function
 //that the thunk calls. ONLY 
@@ -50,7 +14,7 @@ export const subtract = (number) => {
 // the reducer.
 export const saveResult = (res) => {
     return {
-        type:STORE, 
+        type:actionTypes.STORE, 
         result: res
     }
 
@@ -58,7 +22,7 @@ export const saveResult = (res) => {
 export const store = (res) => {
     //this function is a thunk.
     //we get this function into which we
-    //can pass dispatch into as a result of thunk.
+    //can pass `dispatch` into.
     //essentially this function recieves the dispatch
     //from the action, does something in between, and
     //then dispatches AGAIN to the synchronous
@@ -76,7 +40,7 @@ export const store = (res) => {
 
 export const removeNumber = (id) => {
     return {
-        type:DELETE, 
+        type:actionTypes.DELETE, 
         resultElId: id
     }
 
@@ -92,6 +56,4 @@ export const remove = (id) => {
     }
 
 }
-
-
 

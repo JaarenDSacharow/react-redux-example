@@ -1,4 +1,4 @@
-import * as actionTypes from '../actions/actions';
+import * as actionTypes from '../actions/actionTypes';
 
 //spilt the reducers by responsiblity.
 //this reducer is responsible only for results. (Storing)
@@ -8,8 +8,8 @@ const initialState = {
 }
 
 //reducers split like this cannot access global state!
-//thus you cannot use state.counter as before, but only
-//a dispatched action!  See line 19.
+//thus you cannot use state.counter as the value as before, but only
+//the value of a dispatched action!  See line 19.
 
 const resultsReducer = (state = initialState, action) => {
     switch (action.type) {
