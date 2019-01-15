@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-//redux
+//REDUX
 // import combineReducers to be able to split up and then merge your reducers.
 //import compose to allow us to use redux devtools
 //import applyMiddleWare to use middleware of your choice, like thunk or saga.
