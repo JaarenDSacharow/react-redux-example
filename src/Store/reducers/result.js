@@ -14,6 +14,10 @@ const initialState = {
 const resultsReducer = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.STORE:
+        // You could transform data here, before you return.
+        //it may be preferable to do so here, as the action
+        //creators exist only to receive dispatches and pass it off
+        //to the reducer
             return {
                 ...state,
                 results:state.results.concat({id: new Date(), value: action.result})  //immutable way to update a new array

@@ -1,6 +1,6 @@
 import * as actionTypes from './actionTypes';
 
-//these are action creators..They are just functions that return actions.
+//these are action creators...They are just functions that return actions.
 //we use them to return actions so that we can make use of asynchronous middleware,
 //which we couldn't do if we just called action types and dispatched them directly
 //from the component. 

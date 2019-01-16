@@ -6,12 +6,13 @@ import ReactDOM from 'react-dom';
 //import compose to allow us to use redux devtools
 //import applyMiddleWare to use middleware of your choice, like thunk or saga.
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
-//HO component that actually leverages the context API, which you wrap your app in
+
+//Higher Order component that actually leverages the context API, which you wrap your app in
 import { Provider } from 'react-redux';
 
-//reducers
-import counterReducer from './Store/reducers/counter';
-import resultsReducer from './Store/reducers/result';
+//reducers, split by repsonsibility
+import counterReducer from './store/reducers/counter';
+import resultsReducer from './store/reducers/result';
 
 import './index.css';
 import App from './App';

@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import CounterControl from '../../components/CounterControl/CounterControl';
 import CounterOutput from '../../components/CounterOutput/CounterOutput';
 
-import  *  as actionTypes  from '../../Store/actions/index';
+import  * as actionTypes  from '../../store/actions/index';
 
 class Counter extends Component {
 
@@ -51,7 +51,7 @@ const mapStateToProps = (state) => {
     //this creates seperate slices of the state which 
     //correspond with the properties we have the combineReducers method.
     //thus, the state that is accessed within those seperate reducers
-    //can ONLY be mapped to props via state.{propertyName}.{property}.
+    //can ONLY be mapped to props via "state.{propertyName}.{property}"".
     //see below:
     return {
         ctr: state.ctr.counter, 
@@ -74,7 +74,7 @@ const mapDispatchToProps = (dispatch) => {
         onDecrementCounter : () => dispatch(actionTypes.decrement()),
         onAddCounter : () => dispatch(actionTypes.add(10)),
         onSubtractCounter : () => dispatch(actionTypes.subtract(10)),
-        onStoreResult: (result) => dispatch(actionTypes.store(result)),
+        onStoreResult: (result) => dispatch(actionTypes.storeResult(result)),
         //now that we wrapped the prop in an anonymous function on the UI, we
         //can pass data to this mappedProp and dispatch data from the UI to the store.
         onDeleteResult: (id) => dispatch(actionTypes.remove(id)),

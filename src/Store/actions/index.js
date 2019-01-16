@@ -11,5 +11,5 @@ export {
 
 export {
     remove,
-    store,
+    storeResult,
 } from './result';
