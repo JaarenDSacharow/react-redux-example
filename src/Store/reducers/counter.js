@@ -1,5 +1,11 @@
 import * as actionTypes from '../actions/actionTypes';
 
+//this is just a utility function which generically accepts state and new data passed from 
+// the action creator and replaces the standard return statement for the reducer, if you choose to do it this way.
+//I'll use it twice and leave the return statement on the other two for comparison.
+import {updateObject} from '../utility';
+
+//spilt the reducers by responsiblity.
 //this reducer is responsible only for counting.
 
 const initialState = {
@@ -9,15 +15,9 @@ const initialState = {
 const counterReducer = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.INCREMENT:
-            return {
-                ...state,
-                counter: state.counter + 1
-            }
+            return updateObject(state, {counter: state.counter + 1});
         case actionTypes.DECREMENT:
-            return {
-                ...state,
-                counter: state.counter - 1
-            }
+            return  updateObject(state, {counter: state.counter - 1});
         case actionTypes.ADD:
             return {
                 ...state,

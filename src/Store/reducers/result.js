@@ -1,5 +1,7 @@
 import * as actionTypes from '../actions/actionTypes';
 
+import {updateObject} from '../utility';
+
 //spilt the reducers by responsiblity.
 //this reducer is responsible only for results. (Storing)
 
@@ -24,11 +26,9 @@ const resultsReducer = (state = initialState, action) => {
             }
         case actionTypes.DELETE:
             
-            const newResults = state.results.filter( (result) => {return result.id !== action.resultElId})
-            return {
-                ...state,
-                results: newResults  //immutable way to remove from an array
-            }
+            const newResults = state.results.filter( (result) => {return result.id !== action.resultElId}) //immutable way to remove from an array, it returns a new array copied
+            //using utility function instead of returning the object here
+            return updateObject(state, { results: newResults } );
 
     }
     return state;
