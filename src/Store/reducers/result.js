@@ -11,7 +11,7 @@ const initialState = {
 
 //reducers split like this cannot access global state!
 //thus you cannot use state.counter as the value as before, but only
-//the value of a dispatched action!  See line 19.
+//the value of a dispatched action!  See line 25.
 
 const resultsReducer = (state = initialState, action) => {
     switch (action.type) {

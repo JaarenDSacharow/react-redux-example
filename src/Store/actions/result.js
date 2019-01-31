@@ -33,7 +33,7 @@ export const storeResult = (res) => {
     //additionally, you can pass `getState` to this thunk, and then have access to 
     //the state (remember to prefix with the reducer alias)
     //ideally you should pass whatever the action creator needs from the container component,
-    //but if you cannot, you can access any aprt of the state this way.
+    //but if you cannot, you can access any part of the state this way.
     return (dispatch, getState) => {
         setTimeout(
             ()=>{

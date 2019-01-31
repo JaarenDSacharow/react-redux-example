@@ -13,7 +13,7 @@ class Counter extends Component {
 
 
     render () {
-        //note that in the button onClick, we have to pass the props because
+        //note that in the button onClick on line 27, we have to pass the props because
         //the split reducers cannot use global state
         return (
             <div>
@@ -85,7 +85,7 @@ const mapDispatchToProps = (dispatch) => {
 //use this to set up the subscription to the store
 
 //CONNECT is a function that returns a function that takes a component as input
-//pass two things to connect, configuration for this container
+//pass two things to connect, which is configuration for this container
 //1. which parts of the state you want and 2. The actions you want to dispatch
 
 // SEE 1 and 2 above
